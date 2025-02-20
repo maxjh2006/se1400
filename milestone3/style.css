@@ -1,0 +1,96 @@
+/* Resetting some basic styles for margin, padding, and font */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+/* Wrapper grid layout */
+.wrapper {
+    display: grid;
+    grid-template-columns: minmax(0px, 1fr) repeat(6, minmax(0, 175px)) minmax(0px, 1fr);
+    gap: 10px; /* Gap between grid items */
+}
+
+/* Header takes up the full width of the grid */
+header {
+    grid-column: 1 / -1;  /* Span all columns */
+    grid-row: 1;
+    background-color: rgba(255, 99, 71, 0.3); /* Tomato color */
+    height: 80px;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Navigation menu */
+nav {
+    grid-column: 2 / 8;  /* Span columns 2 to 8 */
+    grid-row: 2;
+    background-color: rgba(0, 128, 255, 0.3); /* Blue color */
+    height: 60px;
+    padding: 10px;
+}
+
+/* Styling the navigation links */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav a {
+    color: black;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+/* Main content area */
+main {
+    grid-column: 2 / 8;  /* Span columns 2 to 8 */
+    grid-row: 3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns for sections */
+    gap: 10px;  /* Gap between sections */
+    height: auto;
+}
+
+/* Each section inside main */
+section {
+    background-color: rgba(0, 255, 128, 0.3); /* Green color */
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);  /* Slight shadow for a 3D effect */
+}
+
+/* Aside is hidden for now (based on assignment requirements) */
+aside {
+    display: none; /* Hides the aside section */
+}
+
+/* Footer takes up the full width of the grid */
+footer {
+    grid-column: 1 / -1;  /* Span all columns */
+    grid-row: 4;
+    background-color: rgba(128, 0, 128, 0.3); /* Purple color */
+    height: 80px;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Media query for smaller screens (e.g., mobile) */
+@media (max-width: 768px) {
+    .wrapper {
+        grid-template-columns: 1fr;  /* Stack all items in one column */
+    }
+
+    main {
+        grid-template-columns: 1fr; /* Stack main sections vertically */
+    }
+
+    nav {
+        grid-column: 1 / -1; /* Make nav span across the full width */
+    }
+
+    section {
+        width: 100%;  /* Sections take up full width on small screens */
+    }
+}
