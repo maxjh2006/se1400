@@ -1,0 +1,233 @@
+/* Resetting some basic styles for margin, padding, and font */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Wrapper grid layout */
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr repeat(6, minmax(100px, 175px)) 1fr;
+    gap: 10px;
+    max-width: 1200px; /* Ensure it's centered and doesn't overflow */
+    margin: 0 auto; /* Center layout */
+    width: 100%;
+}
+
+/* Header takes up the full width of the grid */
+header {
+    grid-column: 2 / 8; /* Span columns 2 to 8 to center it */
+    grid-row: 2;  /* Place header on the second row */
+    background-color: rgba(255, 255, 255, 0.8); /* White background with slight transparency */
+    height: 300px;
+    text-align: center;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 10;  /* Ensures header stays on top */
+    min-height: 190px;  /* Set a minimum height to avoid collapsing */
+    margin-bottom: 20px;  /* Add margin to separate from other content */
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 2;
+}
+
+/* Navigation menu */
+nav {
+    grid-column: 1 / -1;  /* Span columns 1 to 8 */
+    grid-row: 1;  /* Move nav to the first row */
+    background-color: rgb(255, 255, 255); /* White background */
+    height: 60px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+/* Styling for nav links */
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    gap: 20px;
+}
+
+nav a {
+    color: black;
+    text-decoration: none;
+    margin: 5px 10px;
+}
+
+/* Main content area */
+main {
+    grid-column: 1 / -1;  /* Ensure it spans all columns */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;  /* Three equal columns for larger screens */
+    gap: 10px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Image Section */
+.image-section {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    display: flex;
+    justify-content: center; /* Keeps images side by side */
+    gap: 10px; /* Reduces the gap between the images */
+    padding: 20px 0;
+    flex-wrap: wrap; /* Allow images to wrap on smaller screens */
+    margin-top: 20px;  /* Add margin to separate from header */
+}
+
+.image-section img {
+    max-width: 45%;  /* Ensure both images are smaller, but maintain a nice proportion */
+    height: auto;    /* Maintains the aspect ratio */
+    object-fit: contain; /* Ensures no stretching */
+}
+
+/* Image caption styling */
+.image-caption {
+    grid-column: 1 / -1;  /* Make sure it spans all columns */
+    grid-row: 4;
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.image-caption h2 {
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+}
+
+.image-caption p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+/* Media query for smaller screens (e.g., mobile) */
+@media (max-width: 768px) {
+    .wrapper {
+        grid-template-columns: 1fr; /* Stack all items vertically */
+    }
+
+    header {
+        grid-column: 1 / -1; /* Ensure header spans full width */
+        min-height: 150px;  /* Reduce height on smaller screens */
+        margin-bottom: 10px;  /* Add space below header */
+    }
+
+    nav ul {
+        flex-direction: column; /* Stack links vertically */
+        text-align: center;
+        width: 100%; /* Ensure links span full width */
+    }
+
+    .image-section {
+        gap: 10px;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .image-section img {
+        max-width: 100%; /* Make images take up full width on mobile */
+    }
+
+    .image-caption {
+        width: 100%; /* Ensure caption also spans full width */
+    }
+
+    .center-content, .left-content, .right-content {
+        width: 100%; /* Ensure all content spans full width */
+        display: block;
+    }
+
+    .left-content, .right-content {
+        display: block; /* Hide side content for mobile */
+    }
+}
+
+/* Media query for medium-sized screens (tablet landscape) */
+@media (max-width: 992px) {
+    .wrapper {
+        grid-template-columns: 1fr; /* Stack all items vertically */
+    }
+
+    header {
+        grid-column: 1 / -1; /* Make sure the header spans full width */
+        min-height: 170px;  /* Adjust height for medium screens */
+    }
+
+    nav ul {
+        flex-direction: column; /* Stack links vertically */
+        text-align: center;
+        width: 100%;
+    }
+
+    .image-section {
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .image-section img {
+        max-width: 90%;  /* Ensure images take up more width on smaller screens */
+    }
+
+    .image-caption {
+        width: 100%;
+    }
+}
+
+/* Footer styles */
+footer {
+    grid-column: 1 / -1;  /* Span all columns */
+    grid-row: 6;
+    background-color: rgba(255, 255, 255);
+    height: 120px;
+    text-align: left;
+    padding: 10px;
+}
+
+.footer-container {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    height: 60px;
+    width: auto;
+}
+
+.footer-section {
+    flex: 1;
+    padding: 0 20px;
+}
+
+.footer-section h3 {
+    margin-bottom: 8px;
+}
+
+.footer-section p {
+    margin: 4px 0;
+}
